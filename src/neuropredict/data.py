@@ -155,7 +155,10 @@ def main() -> None:
         help="Fetch the 40-subject nilearn development subset",
     )
     parser.add_argument(
-        "--n-subjects", type=int, default=40, help="Number of subjects to fetch (max 40 for --fetch-small)"
+        "--n-subjects",
+        type=int,
+        default=40,
+        help="Number of subjects to fetch (max 40 for --fetch-small)",
     )
     parser.add_argument("--data-dir", type=str, default=None, help="Where to cache data")
     parser.add_argument(

@@ -9,8 +9,6 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from neuropredict import data as data_module
-
 
 def test_compute_connectivity_shape_with_mock(monkeypatch, tmp_path):
     """Connectivity matrices should be square, symmetric, and one per subject."""
