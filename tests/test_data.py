@@ -47,3 +47,68 @@ def test_phenotype_dataframe_schema():
         }
     )
     assert expected_cols.issubset(df.columns)
+
+def test_upper_triangle_features_shape():
+    """Upper triangle extraction should produce n*(n-1)/2 features per subject."""
+    from neuropredict.features import upper_triangle_features
+
+    rng = np.random.default_rng(42)
+    n_subjects, n_regions = 5, 10
+    # Generate symmetric matrices
+    raw = rng.standard_normal((n_subjects, n_regions, n_regions))
+    sym = (raw + raw.transpose(0, 2, 1)) / 2
+
+    features = upper_triangle_features(sym)
+    expected_n_features = n_regions * (n_regions - 1) // 2  # 45 for n=10
+    assert features.shape == (n_subjects, expected_n_features)
+
+
+def test_upper_triangle_features_values():
+    """Extracted values should match the actual upper triangle of input."""
+    from neuropredict.features import upper_triangle_features
+
+    # Build a tiny known matrix
+    mat = np.array(
+        [
+            [
+                [1.0, 0.5, 0.3],
+                [0.5, 1.0, 0.7],
+                [0.3, 0.7, 1.0],
+            ]
+        ]
+    )
+    features = upper_triangle_features(mat)
+    # Upper triangle off-diagonal of a 3x3: positions (0,1), (0,2), (1,2)
+    expected = np.array([[0.5, 0.3, 0.7]])
+    np.testing.assert_allclose(features, expected)
+
+
+def test_upper_triangle_features_rejects_non_square():
+    """Should raise on non-square matrices."""
+    from neuropredict.features import upper_triangle_features
+
+    bad = np.zeros((2, 3, 4))
+    try:
+        upper_triangle_features(bad)
+        raise AssertionError("Should have raised ValueError")
+    except ValueError:
+        pass
+
+
+def test_fisher_z_transform_inverse():
+    """Fisher z applied to tanh of x should approximately recover x."""
+    from neuropredict.features import fisher_z_transform
+
+    x = np.array([-2.0, -0.5, 0.0, 0.5, 2.0])
+    correlations = np.tanh(x)
+    recovered = fisher_z_transform(correlations)
+    np.testing.assert_allclose(recovered, x, atol=1e-5)
+
+
+def test_fisher_z_transform_handles_boundary():
+    """Values at +/-1 shouldn't produce infinities."""
+    from neuropredict.features import fisher_z_transform
+
+    boundary = np.array([-1.0, 1.0])
+    result = fisher_z_transform(boundary)
+    assert np.all(np.isfinite(result))

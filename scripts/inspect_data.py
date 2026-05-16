@@ -31,7 +31,7 @@ def main(npz_path: str = "data/processed/dev_subset.npz") -> None:
 
     # Group-mean matrices, side by side
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-    for ax, label, dx in zip(axes, ["Controls", "ADHD"], [0, 1]):
+    for ax, label, dx in zip(axes, ["Controls", "ADHD"], [0, 1], strict=True):
         mean_mat = conn[diagnosis == dx].mean(axis=0)
         np.fill_diagonal(mean_mat, 0)
         im = ax.imshow(mean_mat, cmap="RdBu_r", vmin=-0.8, vmax=0.8)
