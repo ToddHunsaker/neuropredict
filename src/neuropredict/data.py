@@ -35,49 +35,63 @@ class ADHDSubject:
     confounds_path: Path | None = None
 
 
+def _parse_sex(value) -> int:
+    """Map nilearn's sex codes (M/F strings or numeric) to ints. 1=M, 2=F, 0=unknown."""
+    if pd.isna(value):
+        return 0
+    if isinstance(value, str):
+        return {"M": 1, "F": 2}.get(value.strip().upper(), 0)
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return 0
+
+
 def fetch_dev_subset(data_dir: str | Path | None = None, n_subjects: int = 40) -> pd.DataFrame:
-    """Fetch nilearn's curated 40-subject ADHD-200 development subset.
-
-    Pulls preprocessed resting-state NIfTI files plus a phenotypic CSV from
-    S3. Used for fast iteration; results are not publishable but are
-    representative of pipeline behavior.
-
-    Parameters
-    ----------
-    data_dir
-        Where to cache the data. Defaults to ~/nilearn_data.
-    n_subjects
-        How many subjects to pull. Max is 40 in this subset.
-
-    Returns
-    -------
-    DataFrame with columns: subject_id, site, age, sex, diagnosis, func_path.
-    """
+    """Fetch nilearn's curated 40-subject ADHD-200 development subset."""
     from nilearn import datasets
 
     logger.info("Fetching ADHD-200 development subset (n=%d)...", n_subjects)
-    adhd = datasets.fetch_adhd(n_subjects=n_subjects, data_dir=str(data_dir) if data_dir else None)
+    adhd = datasets.fetch_adhd(
+        n_subjects=n_subjects, data_dir=str(data_dir) if data_dir else None
+    )
 
-    # nilearn's phenotypic field is a structured numpy array; convert to a tidy df
-    pheno = pd.DataFrame(adhd.phenotypic)
+    pheno_raw = adhd.phenotypic
+    if isinstance(pheno_raw, pd.DataFrame):
+        pheno = pheno_raw.copy().reset_index(drop=True)
+    elif hasattr(pheno_raw, "dtype") and getattr(pheno_raw.dtype, "names", None):
+        pheno = pd.DataFrame.from_records(pheno_raw)
+    else:
+        pheno = pd.DataFrame(pheno_raw).reset_index(drop=True)
 
-    # Normalize column names (nilearn uses inconsistent casing across versions)
-    pheno.columns = [c.lower() for c in pheno.columns]
+    pheno.columns = [str(c).lower().strip() for c in pheno.columns]
+    logger.info("Phenotype shape: %s | columns: %s", pheno.shape, list(pheno.columns))
 
-    # The 'adhd' column in nilearn's subset: 0 = control, 1 = ADHD (any subtype)
-    diagnosis_col = "adhd" if "adhd" in pheno.columns else "dx"
+    diagnosis_col = None
+    for candidate in ("adhd", "dx", "diagnosis"):
+        if candidate in pheno.columns:
+            diagnosis_col = candidate
+            break
+    if diagnosis_col is None:
+        raise ValueError(f"No diagnosis column found. Available: {list(pheno.columns)}")
+
+    n_func = len(adhd.func)
+    n_pheno = len(pheno)
+    if n_func != n_pheno:
+        logger.warning("Mismatch: %d func files vs %d phenotype rows; using min", n_func, n_pheno)
+    n = min(n_func, n_pheno)
 
     records = []
-    for i, func_path in enumerate(adhd.func):
+    for i in range(n):
         row = pheno.iloc[i]
         records.append(
             {
                 "subject_id": str(row.get("subject", row.get("sub", f"sub_{i:04d}"))),
                 "site": str(row.get("site", "unknown")),
-                "age": float(row.get("age", np.nan)),
-                "sex": int(row.get("sex", 0)) if not pd.isna(row.get("sex")) else 0,
-                "diagnosis": int(row[diagnosis_col]),
-                "func_path": Path(func_path),
+                "age": float(row.get("age", np.nan)) if not pd.isna(row.get("age")) else np.nan,
+                "sex": _parse_sex(row.get("sex")),
+                "diagnosis": int(row[diagnosis_col]) if not pd.isna(row[diagnosis_col]) else 0,
+                "func_path": Path(adhd.func[i]),
             }
         )
 
@@ -90,7 +104,6 @@ def fetch_dev_subset(data_dir: str | Path | None = None, n_subjects: int = 40) -
         df.site.nunique(),
     )
     return df
-
 
 def compute_connectivity_matrices(
     subjects_df: pd.DataFrame,
