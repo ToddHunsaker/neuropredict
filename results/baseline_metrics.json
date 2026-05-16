@@ -1,0 +1,75 @@
+{
+  "model": "logistic_regression_l1",
+  "C": 1.0,
+  "n_subjects": 30,
+  "n_features": 741,
+  "mean_accuracy": 0.375,
+  "mean_auc": 0.3944444444444445,
+  "valid_auc_folds": 5,
+  "total_folds": 7,
+  "per_fold": [
+    {
+      "site": "KKI",
+      "n_train": 22,
+      "n_test": 8,
+      "n_test_adhd": 4,
+      "n_test_controls": 4,
+      "accuracy": 0.375,
+      "auc": 0.25
+    },
+    {
+      "site": "NYU",
+      "n_train": 26,
+      "n_test": 4,
+      "n_test_adhd": 2,
+      "n_test_controls": 2,
+      "accuracy": 0.5,
+      "auc": 0.25
+    },
+    {
+      "site": "NeuroImage",
+      "n_train": 26,
+      "n_test": 4,
+      "n_test_adhd": 0,
+      "n_test_controls": 4,
+      "accuracy": 0.0,
+      "auc": null
+    },
+    {
+      "site": "OHSU",
+      "n_train": 24,
+      "n_test": 6,
+      "n_test_adhd": 3,
+      "n_test_controls": 3,
+      "accuracy": 0.3333333333333333,
+      "auc": 0.22222222222222224
+    },
+    {
+      "site": "Peking_1",
+      "n_train": 27,
+      "n_test": 3,
+      "n_test_adhd": 2,
+      "n_test_controls": 1,
+      "accuracy": 0.6666666666666666,
+      "auc": 0.5
+    },
+    {
+      "site": "Peking_2",
+      "n_train": 26,
+      "n_test": 4,
+      "n_test_adhd": 2,
+      "n_test_controls": 2,
+      "accuracy": 0.75,
+      "auc": 0.75
+    },
+    {
+      "site": "Peking_3",
+      "n_train": 29,
+      "n_test": 1,
+      "n_test_adhd": 0,
+      "n_test_controls": 1,
+      "accuracy": 0.0,
+      "auc": null
+    }
+  ]
+}
