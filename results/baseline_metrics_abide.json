@@ -1,0 +1,194 @@
+{
+  "dataset": "abide",
+  "model": "logistic_regression_l1",
+  "C": 1.0,
+  "n_subjects": 871,
+  "n_regions": 200,
+  "n_features": 19900,
+  "mean_accuracy": 0.664937763954079,
+  "mean_auc": 0.7408823629030281,
+  "valid_auc_folds": 20,
+  "total_folds": 20,
+  "per_fold": [
+    {
+      "site": "CALTECH",
+      "n_train": 856,
+      "n_test": 15,
+      "n_test_case": 5,
+      "n_test_controls": 10,
+      "accuracy": 0.6,
+      "auc": 0.64
+    },
+    {
+      "site": "CMU",
+      "n_train": 860,
+      "n_test": 11,
+      "n_test_case": 6,
+      "n_test_controls": 5,
+      "accuracy": 0.7272727272727273,
+      "auc": 0.9333333333333333
+    },
+    {
+      "site": "KKI",
+      "n_train": 838,
+      "n_test": 33,
+      "n_test_case": 12,
+      "n_test_controls": 21,
+      "accuracy": 0.6666666666666666,
+      "auc": 0.8055555555555556
+    },
+    {
+      "site": "LEUVEN_1",
+      "n_train": 843,
+      "n_test": 28,
+      "n_test_case": 14,
+      "n_test_controls": 14,
+      "accuracy": 0.6428571428571429,
+      "auc": 0.7193877551020408
+    },
+    {
+      "site": "LEUVEN_2",
+      "n_train": 843,
+      "n_test": 28,
+      "n_test_case": 12,
+      "n_test_controls": 16,
+      "accuracy": 0.6071428571428571,
+      "auc": 0.7291666666666666
+    },
+    {
+      "site": "MAX_MUN",
+      "n_train": 825,
+      "n_test": 46,
+      "n_test_case": 19,
+      "n_test_controls": 27,
+      "accuracy": 0.5652173913043478,
+      "auc": 0.6335282651072125
+    },
+    {
+      "site": "NYU",
+      "n_train": 699,
+      "n_test": 172,
+      "n_test_case": 74,
+      "n_test_controls": 98,
+      "accuracy": 0.7558139534883721,
+      "auc": 0.8010204081632653
+    },
+    {
+      "site": "OHSU",
+      "n_train": 846,
+      "n_test": 25,
+      "n_test_case": 12,
+      "n_test_controls": 13,
+      "accuracy": 0.6,
+      "auc": 0.6282051282051282
+    },
+    {
+      "site": "OLIN",
+      "n_train": 843,
+      "n_test": 28,
+      "n_test_case": 14,
+      "n_test_controls": 14,
+      "accuracy": 0.5357142857142857,
+      "auc": 0.6428571428571428
+    },
+    {
+      "site": "PITT",
+      "n_train": 821,
+      "n_test": 50,
+      "n_test_case": 24,
+      "n_test_controls": 26,
+      "accuracy": 0.7,
+      "auc": 0.6955128205128206
+    },
+    {
+      "site": "SBL",
+      "n_train": 845,
+      "n_test": 26,
+      "n_test_case": 12,
+      "n_test_controls": 14,
+      "accuracy": 0.5769230769230769,
+      "auc": 0.5297619047619048
+    },
+    {
+      "site": "SDSU",
+      "n_train": 844,
+      "n_test": 27,
+      "n_test_case": 8,
+      "n_test_controls": 19,
+      "accuracy": 0.7777777777777778,
+      "auc": 0.8223684210526316
+    },
+    {
+      "site": "STANFORD",
+      "n_train": 846,
+      "n_test": 25,
+      "n_test_case": 12,
+      "n_test_controls": 13,
+      "accuracy": 0.6,
+      "auc": 0.7243589743589743
+    },
+    {
+      "site": "TRINITY",
+      "n_train": 827,
+      "n_test": 44,
+      "n_test_case": 19,
+      "n_test_controls": 25,
+      "accuracy": 0.5681818181818182,
+      "auc": 0.6905263157894737
+    },
+    {
+      "site": "UCLA_1",
+      "n_train": 807,
+      "n_test": 64,
+      "n_test_case": 37,
+      "n_test_controls": 27,
+      "accuracy": 0.734375,
+      "auc": 0.7807807807807808
+    },
+    {
+      "site": "UCLA_2",
+      "n_train": 850,
+      "n_test": 21,
+      "n_test_case": 11,
+      "n_test_controls": 10,
+      "accuracy": 0.7619047619047619,
+      "auc": 0.8090909090909091
+    },
+    {
+      "site": "UM_1",
+      "n_train": 785,
+      "n_test": 86,
+      "n_test_case": 34,
+      "n_test_controls": 52,
+      "accuracy": 0.6162790697674418,
+      "auc": 0.7420814479638009
+    },
+    {
+      "site": "UM_2",
+      "n_train": 837,
+      "n_test": 34,
+      "n_test_case": 13,
+      "n_test_controls": 21,
+      "accuracy": 0.7941176470588235,
+      "auc": 0.8974358974358975
+    },
+    {
+      "site": "USM",
+      "n_train": 804,
+      "n_test": 67,
+      "n_test_case": 43,
+      "n_test_controls": 24,
+      "accuracy": 0.7611940298507462,
+      "auc": 0.8343023255813954
+    },
+    {
+      "site": "YALE",
+      "n_train": 830,
+      "n_test": 41,
+      "n_test_case": 22,
+      "n_test_controls": 19,
+      "accuracy": 0.7073170731707317,
+      "auc": 0.7583732057416268
+    }
+  ]
+}
