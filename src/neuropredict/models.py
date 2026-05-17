@@ -58,7 +58,7 @@ class CVResult:
             lines.append(
                 f"  {fr.test_site:>12}  "
                 f"n_train={fr.n_train:>3}  n_test={fr.n_test:>2} "
-                f"({fr.n_test_adhd} ADHD, {fr.n_test_controls} ctrl)  "
+                f"({fr.n_test_adhd} case, {fr.n_test_controls} ctrl)  "
                 f"acc={fr.accuracy:.3f}  auc={auc_str}"
             )
         return "\n".join(lines)
