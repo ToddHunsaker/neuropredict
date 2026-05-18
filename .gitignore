@@ -48,3 +48,4 @@ logs/
 # Secrets
 .env
 .env.local
+results/gnn_checkpoints/
