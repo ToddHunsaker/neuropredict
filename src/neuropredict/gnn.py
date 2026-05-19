@@ -93,8 +93,27 @@ class BrainGCN(nn.Module):
         self.dropout = dropout
         self.classifier = nn.Linear(out_features, 2)
 
-    def forward(self, data: Data) -> torch.Tensor:
-        x, edge_index, batch = data.x, data.edge_index, data.batch
+    def forward(
+        self,
+        x: torch.Tensor | Data | None = None,
+        edge_index: torch.Tensor | None = None,
+        batch: torch.Tensor | None = None,
+        *,
+        data: Data | None = None,
+    ) -> torch.Tensor:
+        # Support three calling conventions:
+        # 1. model(data) -- training path, when x is actually a Data object
+        # 2. model(data=data) -- explicit keyword
+        # 3. model(x, edge_index, batch) -- GNNExplainer path
+        if isinstance(x, Data):
+            data = x
+            x = None
+        if data is not None:
+            x, edge_index, batch = data.x, data.edge_index, data.batch
+        if x is None or edge_index is None:
+            raise ValueError("Must provide either `data` or `x` and `edge_index`")
+        if batch is None:
+            batch = torch.zeros(x.shape[0], dtype=torch.long, device=x.device)
 
         x = self.conv1(x, edge_index)
         x = F.relu(x)
@@ -103,7 +122,6 @@ class BrainGCN(nn.Module):
         x = self.conv2(x, edge_index)
         x = F.relu(x)
 
-        # Pool node embeddings into a single graph-level vector
         x = global_mean_pool(x, batch)
         return self.classifier(x)
 
