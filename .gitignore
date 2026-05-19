@@ -49,3 +49,5 @@ logs/
 .env
 .env.local
 results/gnn_checkpoints/
+results/shap_values_abide.npy
+results/*.npy

@@ -1,0 +1,462 @@
+{
+  "dataset": "abide",
+  "model": "logistic_regression_l1",
+  "C": 1.0,
+  "top_k": 50,
+  "n_subjects": 871,
+  "n_regions": 200,
+  "n_features": 19900,
+  "n_nonzero_coefs": 11663,
+  "features": [
+    {
+      "rank": 1,
+      "feature_idx": 15003,
+      "region_a": 100,
+      "region_b": 154,
+      "mean_abs_shap": 0.033517039907417334,
+      "mean_signed_shap": 0.005247418240684172,
+      "coefficient": 0.04253369015551338
+    },
+    {
+      "rank": 2,
+      "feature_idx": 13493,
+      "region_a": 86,
+      "region_b": 121,
+      "mean_abs_shap": 0.029113528721073284,
+      "mean_signed_shap": 0.001976315998186463,
+      "coefficient": -0.03660900116677203
+    },
+    {
+      "rank": 3,
+      "feature_idx": 8481,
+      "region_a": 48,
+      "region_b": 106,
+      "mean_abs_shap": 0.027774739312790217,
+      "mean_signed_shap": -0.0034335981991954717,
+      "coefficient": 0.03495840694269241
+    },
+    {
+      "rank": 4,
+      "feature_idx": 14800,
+      "region_a": 98,
+      "region_b": 150,
+      "mean_abs_shap": 0.027731967093209346,
+      "mean_signed_shap": 0.0018912752902661802,
+      "coefficient": -0.03479209584283207
+    },
+    {
+      "rank": 5,
+      "feature_idx": 5826,
+      "region_a": 31,
+      "region_b": 154,
+      "mean_abs_shap": 0.026367445056077174,
+      "mean_signed_shap": 0.002871632968551808,
+      "coefficient": 0.0335673482165032
+    },
+    {
+      "rank": 6,
+      "feature_idx": 6771,
+      "region_a": 37,
+      "region_b": 112,
+      "mean_abs_shap": 0.026060166230309663,
+      "mean_signed_shap": -0.002653183832713912,
+      "coefficient": 0.03250944687448043
+    },
+    {
+      "rank": 7,
+      "feature_idx": 13467,
+      "region_a": 86,
+      "region_b": 95,
+      "mean_abs_shap": 0.025945907211045376,
+      "mean_signed_shap": 0.0003845654206869855,
+      "coefficient": 0.033388859573386234
+    },
+    {
+      "rank": 8,
+      "feature_idx": 4750,
+      "region_a": 25,
+      "region_b": 101,
+      "mean_abs_shap": 0.02490486220361695,
+      "mean_signed_shap": 0.00026185197717103843,
+      "coefficient": -0.031651362056435636
+    },
+    {
+      "rank": 9,
+      "feature_idx": 3549,
+      "region_a": 18,
+      "region_b": 139,
+      "mean_abs_shap": 0.024816265894459906,
+      "mean_signed_shap": -0.0017830215832719202,
+      "coefficient": -0.031089478691171228
+    },
+    {
+      "rank": 10,
+      "feature_idx": 18812,
+      "region_a": 152,
+      "region_b": 193,
+      "mean_abs_shap": 0.02449497289713106,
+      "mean_signed_shap": 0.00572395507638227,
+      "coefficient": 0.031247131969860852
+    },
+    {
+      "rank": 11,
+      "feature_idx": 18907,
+      "region_a": 154,
+      "region_b": 197,
+      "mean_abs_shap": 0.024326584315425656,
+      "mean_signed_shap": -0.00255972966317938,
+      "coefficient": 0.03034990230144063
+    },
+    {
+      "rank": 12,
+      "feature_idx": 14948,
+      "region_a": 99,
+      "region_b": 198,
+      "mean_abs_shap": 0.0243117302446986,
+      "mean_signed_shap": -0.002286114007813932,
+      "coefficient": -0.030725706570988935
+    },
+    {
+      "rank": 13,
+      "feature_idx": 5599,
+      "region_a": 30,
+      "region_b": 95,
+      "mean_abs_shap": 0.02425089708704297,
+      "mean_signed_shap": -0.0033065718559869683,
+      "coefficient": -0.030770105041843892
+    },
+    {
+      "rank": 14,
+      "feature_idx": 6881,
+      "region_a": 38,
+      "region_b": 61,
+      "mean_abs_shap": 0.024248227233437523,
+      "mean_signed_shap": 0.0011160842001063853,
+      "coefficient": 0.0302117862555805
+    },
+    {
+      "rank": 15,
+      "feature_idx": 18413,
+      "region_a": 144,
+      "region_b": 198,
+      "mean_abs_shap": 0.02411168187663111,
+      "mean_signed_shap": -0.0024363880674313537,
+      "coefficient": -0.030548052743641283
+    },
+    {
+      "rank": 16,
+      "feature_idx": 9547,
+      "region_a": 55,
+      "region_b": 143,
+      "mean_abs_shap": 0.02387904386447728,
+      "mean_signed_shap": -0.003965260182787548,
+      "coefficient": -0.02999481572920207
+    },
+    {
+      "rank": 17,
+      "feature_idx": 5849,
+      "region_a": 31,
+      "region_b": 177,
+      "mean_abs_shap": 0.023821258602633892,
+      "mean_signed_shap": -0.0009882074873044462,
+      "coefficient": 0.02968003726485755
+    },
+    {
+      "rank": 18,
+      "feature_idx": 1965,
+      "region_a": 10,
+      "region_b": 31,
+      "mean_abs_shap": 0.023806396665560968,
+      "mean_signed_shap": 0.00046341036969810545,
+      "coefficient": -0.029598300701088744
+    },
+    {
+      "rank": 19,
+      "feature_idx": 14062,
+      "region_a": 91,
+      "region_b": 140,
+      "mean_abs_shap": 0.023769398191172776,
+      "mean_signed_shap": -0.0001547045699282988,
+      "coefficient": 0.02966069329754622
+    },
+    {
+      "rank": 20,
+      "feature_idx": 7374,
+      "region_a": 41,
+      "region_b": 77,
+      "mean_abs_shap": 0.02364650703894233,
+      "mean_signed_shap": 0.0012058534017688938,
+      "coefficient": -0.030587560256884683
+    },
+    {
+      "rank": 21,
+      "feature_idx": 15571,
+      "region_a": 106,
+      "region_b": 149,
+      "mean_abs_shap": 0.02354201575201347,
+      "mean_signed_shap": -0.007110144759640511,
+      "coefficient": -0.02935111508723593
+    },
+    {
+      "rank": 22,
+      "feature_idx": 17395,
+      "region_a": 128,
+      "region_b": 180,
+      "mean_abs_shap": 0.023449097894217032,
+      "mean_signed_shap": 2.785815634884911e-06,
+      "coefficient": 0.02942146282114739
+    },
+    {
+      "rank": 23,
+      "feature_idx": 4963,
+      "region_a": 26,
+      "region_b": 141,
+      "mean_abs_shap": 0.023420965878209646,
+      "mean_signed_shap": 0.0004409124319145469,
+      "coefficient": -0.029688901363501646
+    },
+    {
+      "rank": 24,
+      "feature_idx": 8206,
+      "region_a": 46,
+      "region_b": 134,
+      "mean_abs_shap": 0.023388908241924914,
+      "mean_signed_shap": 0.005413874535856928,
+      "coefficient": -0.02920559872733485
+    },
+    {
+      "rank": 25,
+      "feature_idx": 4823,
+      "region_a": 25,
+      "region_b": 174,
+      "mean_abs_shap": 0.023370810705302187,
+      "mean_signed_shap": -0.0058060083524606905,
+      "coefficient": -0.02855192789926631
+    },
+    {
+      "rank": 26,
+      "feature_idx": 7493,
+      "region_a": 41,
+      "region_b": 196,
+      "mean_abs_shap": 0.022816153416231805,
+      "mean_signed_shap": -0.0015906841363036604,
+      "coefficient": 0.02845980572946852
+    },
+    {
+      "rank": 27,
+      "feature_idx": 14386,
+      "region_a": 94,
+      "region_b": 146,
+      "mean_abs_shap": 0.02279153680569618,
+      "mean_signed_shap": -0.00194800390862224,
+      "coefficient": 0.028454975468427117
+    },
+    {
+      "rank": 28,
+      "feature_idx": 3733,
+      "region_a": 19,
+      "region_b": 143,
+      "mean_abs_shap": 0.022673042288115817,
+      "mean_signed_shap": -0.00023737608995776576,
+      "coefficient": -0.02871432953377525
+    },
+    {
+      "rank": 29,
+      "feature_idx": 11916,
+      "region_a": 73,
+      "region_b": 91,
+      "mean_abs_shap": 0.022530223923067257,
+      "mean_signed_shap": -0.0008945513060901611,
+      "coefficient": 0.028280270041020978
+    },
+    {
+      "rank": 30,
+      "feature_idx": 7119,
+      "region_a": 39,
+      "region_b": 139,
+      "mean_abs_shap": 0.022482736743211943,
+      "mean_signed_shap": 0.0026241261250664278,
+      "coefficient": -0.027887043099526384
+    },
+    {
+      "rank": 31,
+      "feature_idx": 8799,
+      "region_a": 50,
+      "region_b": 125,
+      "mean_abs_shap": 0.022402782002348857,
+      "mean_signed_shap": 0.002073261607382497,
+      "coefficient": -0.028036477620119397
+    },
+    {
+      "rank": 32,
+      "feature_idx": 9797,
+      "region_a": 57,
+      "region_b": 108,
+      "mean_abs_shap": 0.02233026422306788,
+      "mean_signed_shap": 0.003497150310624546,
+      "coefficient": -0.028141043032826604
+    },
+    {
+      "rank": 33,
+      "feature_idx": 18103,
+      "region_a": 139,
+      "region_b": 173,
+      "mean_abs_shap": 0.022262223795438688,
+      "mean_signed_shap": -0.0018765861694977882,
+      "coefficient": -0.027804390807818595
+    },
+    {
+      "rank": 34,
+      "feature_idx": 19110,
+      "region_a": 159,
+      "region_b": 190,
+      "mean_abs_shap": 0.022248643428256526,
+      "mean_signed_shap": -0.0008172788148958725,
+      "coefficient": -0.027309240220540102
+    },
+    {
+      "rank": 35,
+      "feature_idx": 15106,
+      "region_a": 101,
+      "region_b": 159,
+      "mean_abs_shap": 0.02221378274276007,
+      "mean_signed_shap": -0.00024816262333931475,
+      "coefficient": 0.027998935279849355
+    },
+    {
+      "rank": 36,
+      "feature_idx": 8422,
+      "region_a": 47,
+      "region_b": 198,
+      "mean_abs_shap": 0.022208083023129092,
+      "mean_signed_shap": 0.0030162634607836564,
+      "coefficient": -0.028221684864394057
+    },
+    {
+      "rank": 37,
+      "feature_idx": 3750,
+      "region_a": 19,
+      "region_b": 160,
+      "mean_abs_shap": 0.022196787345594302,
+      "mean_signed_shap": 0.0022106643767531293,
+      "coefficient": -0.027764524832487633
+    },
+    {
+      "rank": 38,
+      "feature_idx": 4863,
+      "region_a": 26,
+      "region_b": 41,
+      "mean_abs_shap": 0.022066210657296536,
+      "mean_signed_shap": 0.0014438650570524096,
+      "coefficient": -0.027729187188063165
+    },
+    {
+      "rank": 39,
+      "feature_idx": 5850,
+      "region_a": 31,
+      "region_b": 178,
+      "mean_abs_shap": 0.02195130199192336,
+      "mean_signed_shap": -0.0006150042296691642,
+      "coefficient": -0.027352561651713327
+    },
+    {
+      "rank": 40,
+      "feature_idx": 2575,
+      "region_a": 13,
+      "region_b": 80,
+      "mean_abs_shap": 0.0219317589971649,
+      "mean_signed_shap": -0.0020472759603812544,
+      "coefficient": -0.027275390978369375
+    },
+    {
+      "rank": 41,
+      "feature_idx": 19089,
+      "region_a": 159,
+      "region_b": 169,
+      "mean_abs_shap": 0.021924561133802378,
+      "mean_signed_shap": 0.0006488599988421697,
+      "coefficient": 0.0277571366951916
+    },
+    {
+      "rank": 42,
+      "feature_idx": 15724,
+      "region_a": 108,
+      "region_b": 119,
+      "mean_abs_shap": 0.02184268272744711,
+      "mean_signed_shap": 0.0004398776772787189,
+      "coefficient": -0.027333503677229663
+    },
+    {
+      "rank": 43,
+      "feature_idx": 9095,
+      "region_a": 52,
+      "region_b": 126,
+      "mean_abs_shap": 0.02182385159275982,
+      "mean_signed_shap": -0.002053399079080398,
+      "coefficient": 0.027436037835482763
+    },
+    {
+      "rank": 44,
+      "feature_idx": 8843,
+      "region_a": 50,
+      "region_b": 169,
+      "mean_abs_shap": 0.021809819346306013,
+      "mean_signed_shap": 0.002052690247666174,
+      "coefficient": 0.02747132862560462
+    },
+    {
+      "rank": 45,
+      "feature_idx": 4935,
+      "region_a": 26,
+      "region_b": 113,
+      "mean_abs_shap": 0.021789885922089393,
+      "mean_signed_shap": 1.8946106871866545e-05,
+      "coefficient": 0.027633112992061965
+    },
+    {
+      "rank": 46,
+      "feature_idx": 12330,
+      "region_a": 76,
+      "region_b": 133,
+      "mean_abs_shap": 0.021641308984681785,
+      "mean_signed_shap": -0.00192065067365707,
+      "coefficient": -0.02781602787611488
+    },
+    {
+      "rank": 47,
+      "feature_idx": 1394,
+      "region_a": 7,
+      "region_b": 30,
+      "mean_abs_shap": 0.021614111041836213,
+      "mean_signed_shap": -0.0028885699875563007,
+      "coefficient": -0.026715515847348874
+    },
+    {
+      "rank": 48,
+      "feature_idx": 9673,
+      "region_a": 56,
+      "region_b": 126,
+      "mean_abs_shap": 0.021604670409321926,
+      "mean_signed_shap": 0.001030142537502863,
+      "coefficient": 0.027423481014125103
+    },
+    {
+      "rank": 49,
+      "feature_idx": 9973,
+      "region_a": 58,
+      "region_b": 143,
+      "mean_abs_shap": 0.021585736586339697,
+      "mean_signed_shap": -0.002436766675517461,
+      "coefficient": -0.02697137636380352
+    },
+    {
+      "rank": 50,
+      "feature_idx": 9510,
+      "region_a": 55,
+      "region_b": 106,
+      "mean_abs_shap": 0.021582251316640943,
+      "mean_signed_shap": -0.0005917145823560615,
+      "coefficient": -0.02727544505078044
+    }
+  ]
+}
