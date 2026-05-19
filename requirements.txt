@@ -5,3 +5,4 @@ scikit-learn==1.8.0
 shap==0.44.1
 matplotlib==3.9.0
 joblib==1.4.2
+nilearn==0.10.4

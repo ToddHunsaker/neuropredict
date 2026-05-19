@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 import shap
 import streamlit as st
+from nilearn import plotting
 
 ARTIFACTS_DIR = Path("app_artifacts")
 N_REGIONS_EXPECTED = 200
@@ -55,6 +56,10 @@ def load_examples():
 def load_dataset_meta():
     with (ARTIFACTS_DIR / "dataset_meta.json").open() as fh:
         return json.load(fh)
+
+@st.cache_resource
+def load_centroids():
+    return np.load(ARTIFACTS_DIR / "cc200_centroids.npy")
 
 
 @st.cache_resource
@@ -233,8 +238,61 @@ def main():
             correct = (subject_info["diagnosis"] == 1) == (prediction == "autism")
             st.write(f"- Model correct: `{correct}`")
 
-    st.subheader("Most influential connections (per-subject SHAP)")
+    # Build the connection data once; both 3D and 4-pane use it
     top_features = top_k_features(shap_values, n_regions, k=15)
+    centroids = load_centroids()
+
+    adjacency = np.zeros((n_regions, n_regions))
+    for f in top_features:
+        a, b = f["region_a"], f["region_b"]
+        adjacency[a, b] = f["shap"]
+        adjacency[b, a] = f["shap"]
+
+    valid_mask = np.isfinite(centroids).all(axis=1)
+    valid_indices = np.where(valid_mask)[0]
+    adjacency_valid = adjacency[np.ix_(valid_indices, valid_indices)]
+    centroids_valid = centroids[valid_indices]
+
+    st.subheader("Brain visualization: interactive 3D")
+    st.caption(
+        "Drag to rotate, scroll to zoom. "
+        "Red lines push the prediction toward autism; blue toward control."
+    )
+    view = plotting.view_connectome(
+        adjacency_valid,
+        centroids_valid,
+        edge_threshold=None,
+        edge_cmap="RdBu_r",
+        symmetric_cmap=True,
+        linewidth=4.0,
+        node_size=4.0,
+        colorbar=True,
+    )
+    st.components.v1.html(view.get_iframe(), height=520, scrolling=False)
+
+    st.subheader("Brain visualization: static four-view")
+    st.caption(
+        "Lateral left, lateral right, top, and bottom views. "
+        "Same connections as the 3D view above."
+    )
+    edge_max = max(abs(adjacency.min()), abs(adjacency.max()))
+    fig_brain = plotting.plot_connectome(
+        adjacency_valid,
+        centroids_valid,
+        edge_threshold=None,
+        node_color="lightgray",
+        node_size=20,
+        edge_kwargs={"linewidth": 2},
+        edge_cmap="RdBu_r",
+        edge_vmin=-edge_max,
+        edge_vmax=edge_max,
+        display_mode="lyrz",
+        figure=plt.figure(figsize=(12, 4)),
+    )
+    st.pyplot(fig_brain.frame_axes.figure)
+    plt.close("all")
+
+    st.subheader("Most influential connections (per-subject SHAP)")
     rows = []
     for f in top_features:
         net_a = region_to_network.get(f["region_a"], "unknown")
