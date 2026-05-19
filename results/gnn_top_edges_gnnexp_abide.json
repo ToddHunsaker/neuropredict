@@ -1,0 +1,473 @@
+{
+  "dataset": "abide",
+  "model": "brain_gcn",
+  "edge_threshold_percentile": 90.0,
+  "n_epochs": 100,
+  "explainer_epochs": 100,
+  "top_k": 50,
+  "min_subjects": 10,
+  "n_subjects": 871,
+  "n_regions": 200,
+  "edges": [
+    {
+      "rank": 1,
+      "region_a": 109,
+      "region_b": 135,
+      "network_a": "default_mode",
+      "network_b": "salience",
+      "mean_importance": 0.29477106407284737,
+      "n_subjects_present": 16
+    },
+    {
+      "rank": 2,
+      "region_a": 100,
+      "region_b": 114,
+      "network_a": "frontoparietal",
+      "network_b": "default_mode",
+      "mean_importance": 0.29365522414445877,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 3,
+      "region_a": 40,
+      "region_b": 114,
+      "network_a": "dorsal_attention",
+      "network_b": "default_mode",
+      "mean_importance": 0.29291411985953647,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 4,
+      "region_a": 27,
+      "region_b": 31,
+      "network_a": "unknown",
+      "network_b": "limbic",
+      "mean_importance": 0.29241478112008834,
+      "n_subjects_present": 18
+    },
+    {
+      "rank": 5,
+      "region_a": 77,
+      "region_b": 150,
+      "network_a": "default_mode",
+      "network_b": "default_mode",
+      "mean_importance": 0.292062047123909,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 6,
+      "region_a": 29,
+      "region_b": 58,
+      "network_a": "limbic",
+      "network_b": "dorsal_attention",
+      "mean_importance": 0.2913779079914093,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 7,
+      "region_a": 134,
+      "region_b": 150,
+      "network_a": "visual",
+      "network_b": "default_mode",
+      "mean_importance": 0.2911868095397949,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 8,
+      "region_a": 26,
+      "region_b": 123,
+      "network_a": "limbic",
+      "network_b": "dorsal_attention",
+      "mean_importance": 0.2910004466772079,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 9,
+      "region_a": 140,
+      "region_b": 197,
+      "network_a": "background",
+      "network_b": "visual",
+      "mean_importance": 0.29063610434532167,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 10,
+      "region_a": 160,
+      "region_b": 197,
+      "network_a": "background",
+      "network_b": "visual",
+      "mean_importance": 0.2906189834078153,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 11,
+      "region_a": 107,
+      "region_b": 159,
+      "network_a": "dorsal_attention",
+      "network_b": "salience",
+      "mean_importance": 0.290594807267189,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 12,
+      "region_a": 95,
+      "region_b": 119,
+      "network_a": "default_mode",
+      "network_b": "salience",
+      "mean_importance": 0.29039520025253296,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 13,
+      "region_a": 101,
+      "region_b": 164,
+      "network_a": "visual",
+      "network_b": "default_mode",
+      "mean_importance": 0.29017694542805356,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 14,
+      "region_a": 4,
+      "region_b": 189,
+      "network_a": "default_mode",
+      "network_b": "dorsal_attention",
+      "mean_importance": 0.2900664985179901,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 15,
+      "region_a": 123,
+      "region_b": 147,
+      "network_a": "dorsal_attention",
+      "network_b": "salience",
+      "mean_importance": 0.2899517029523849,
+      "n_subjects_present": 20
+    },
+    {
+      "rank": 16,
+      "region_a": 18,
+      "region_b": 119,
+      "network_a": "background",
+      "network_b": "salience",
+      "mean_importance": 0.2899264213111665,
+      "n_subjects_present": 18
+    },
+    {
+      "rank": 17,
+      "region_a": 161,
+      "region_b": 186,
+      "network_a": "unknown",
+      "network_b": "limbic",
+      "mean_importance": 0.28973834216594696,
+      "n_subjects_present": 16
+    },
+    {
+      "rank": 18,
+      "region_a": 30,
+      "region_b": 71,
+      "network_a": "dorsal_attention",
+      "network_b": "somatomotor",
+      "mean_importance": 0.2896599968274434,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 19,
+      "region_a": 66,
+      "region_b": 180,
+      "network_a": "limbic",
+      "network_b": "somatomotor",
+      "mean_importance": 0.28949259519577025,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 20,
+      "region_a": 59,
+      "region_b": 119,
+      "network_a": "salience",
+      "network_b": "salience",
+      "mean_importance": 0.28947679450114566,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 21,
+      "region_a": 92,
+      "region_b": 138,
+      "network_a": "default_mode",
+      "network_b": "dorsal_attention",
+      "mean_importance": 0.2891549670270511,
+      "n_subjects_present": 28
+    },
+    {
+      "rank": 22,
+      "region_a": 135,
+      "region_b": 139,
+      "network_a": "salience",
+      "network_b": "limbic",
+      "mean_importance": 0.28872885182499886,
+      "n_subjects_present": 16
+    },
+    {
+      "rank": 23,
+      "region_a": 16,
+      "region_b": 175,
+      "network_a": "visual",
+      "network_b": "dorsal_attention",
+      "mean_importance": 0.2885705654819806,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 24,
+      "region_a": 77,
+      "region_b": 187,
+      "network_a": "default_mode",
+      "network_b": "frontoparietal",
+      "mean_importance": 0.2884520526443209,
+      "n_subjects_present": 14
+    },
+    {
+      "rank": 25,
+      "region_a": 143,
+      "region_b": 198,
+      "network_a": "dorsal_attention",
+      "network_b": "visual",
+      "mean_importance": 0.28843451514840124,
+      "n_subjects_present": 20
+    },
+    {
+      "rank": 26,
+      "region_a": 23,
+      "region_b": 26,
+      "network_a": "default_mode",
+      "network_b": "limbic",
+      "mean_importance": 0.2884300508432918,
+      "n_subjects_present": 18
+    },
+    {
+      "rank": 27,
+      "region_a": 184,
+      "region_b": 190,
+      "network_a": "visual",
+      "network_b": "somatomotor",
+      "mean_importance": 0.2882639699512058,
+      "n_subjects_present": 18
+    },
+    {
+      "rank": 28,
+      "region_a": 155,
+      "region_b": 193,
+      "network_a": "visual",
+      "network_b": "dorsal_attention",
+      "mean_importance": 0.2882574548323949,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 29,
+      "region_a": 135,
+      "region_b": 177,
+      "network_a": "salience",
+      "network_b": "default_mode",
+      "mean_importance": 0.28819037415087223,
+      "n_subjects_present": 16
+    },
+    {
+      "rank": 30,
+      "region_a": 120,
+      "region_b": 185,
+      "network_a": "salience",
+      "network_b": "default_mode",
+      "mean_importance": 0.28808289890487987,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 31,
+      "region_a": 84,
+      "region_b": 147,
+      "network_a": "frontoparietal",
+      "network_b": "salience",
+      "mean_importance": 0.2880466431379318,
+      "n_subjects_present": 14
+    },
+    {
+      "rank": 32,
+      "region_a": 134,
+      "region_b": 188,
+      "network_a": "visual",
+      "network_b": "default_mode",
+      "mean_importance": 0.2880176305770874,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 33,
+      "region_a": 98,
+      "region_b": 153,
+      "network_a": "visual",
+      "network_b": "background",
+      "mean_importance": 0.2879718757337994,
+      "n_subjects_present": 18
+    },
+    {
+      "rank": 34,
+      "region_a": 117,
+      "region_b": 131,
+      "network_a": "frontoparietal",
+      "network_b": "default_mode",
+      "mean_importance": 0.28794238716363907,
+      "n_subjects_present": 20
+    },
+    {
+      "rank": 35,
+      "region_a": 34,
+      "region_b": 74,
+      "network_a": "visual",
+      "network_b": "visual",
+      "mean_importance": 0.28790199632445973,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 36,
+      "region_a": 53,
+      "region_b": 147,
+      "network_a": "somatomotor",
+      "network_b": "salience",
+      "mean_importance": 0.28789394721388817,
+      "n_subjects_present": 24
+    },
+    {
+      "rank": 37,
+      "region_a": 120,
+      "region_b": 189,
+      "network_a": "salience",
+      "network_b": "dorsal_attention",
+      "mean_importance": 0.28782171197235584,
+      "n_subjects_present": 16
+    },
+    {
+      "rank": 38,
+      "region_a": 11,
+      "region_b": 170,
+      "network_a": "default_mode",
+      "network_b": "unknown",
+      "mean_importance": 0.2878017514944077,
+      "n_subjects_present": 10
+    },
+    {
+      "rank": 39,
+      "region_a": 7,
+      "region_b": 29,
+      "network_a": "dorsal_attention",
+      "network_b": "limbic",
+      "mean_importance": 0.2876850108305613,
+      "n_subjects_present": 30
+    },
+    {
+      "rank": 40,
+      "region_a": 86,
+      "region_b": 147,
+      "network_a": "frontoparietal",
+      "network_b": "salience",
+      "mean_importance": 0.28767869373162586,
+      "n_subjects_present": 18
+    },
+    {
+      "rank": 41,
+      "region_a": 20,
+      "region_b": 86,
+      "network_a": "visual",
+      "network_b": "frontoparietal",
+      "mean_importance": 0.2876605904764599,
+      "n_subjects_present": 18
+    },
+    {
+      "rank": 42,
+      "region_a": 51,
+      "region_b": 75,
+      "network_a": "limbic",
+      "network_b": "background",
+      "mean_importance": 0.28760496030251187,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 43,
+      "region_a": 49,
+      "region_b": 100,
+      "network_a": "background",
+      "network_b": "frontoparietal",
+      "mean_importance": 0.2876016069203615,
+      "n_subjects_present": 16
+    },
+    {
+      "rank": 44,
+      "region_a": 55,
+      "region_b": 157,
+      "network_a": "background",
+      "network_b": "dorsal_attention",
+      "mean_importance": 0.28755595215729307,
+      "n_subjects_present": 14
+    },
+    {
+      "rank": 45,
+      "region_a": 80,
+      "region_b": 177,
+      "network_a": "visual",
+      "network_b": "default_mode",
+      "mean_importance": 0.28755289647314286,
+      "n_subjects_present": 18
+    },
+    {
+      "rank": 46,
+      "region_a": 30,
+      "region_b": 180,
+      "network_a": "dorsal_attention",
+      "network_b": "somatomotor",
+      "mean_importance": 0.28754804531733197,
+      "n_subjects_present": 12
+    },
+    {
+      "rank": 47,
+      "region_a": 159,
+      "region_b": 191,
+      "network_a": "salience",
+      "network_b": "background",
+      "mean_importance": 0.2875355120216097,
+      "n_subjects_present": 14
+    },
+    {
+      "rank": 48,
+      "region_a": 117,
+      "region_b": 182,
+      "network_a": "frontoparietal",
+      "network_b": "limbic",
+      "mean_importance": 0.2875297431434904,
+      "n_subjects_present": 14
+    },
+    {
+      "rank": 49,
+      "region_a": 126,
+      "region_b": 171,
+      "network_a": "somatomotor",
+      "network_b": "somatomotor",
+      "mean_importance": 0.28752846270799637,
+      "n_subjects_present": 16
+    },
+    {
+      "rank": 50,
+      "region_a": 20,
+      "region_b": 100,
+      "network_a": "visual",
+      "network_b": "frontoparietal",
+      "mean_importance": 0.2875267118215561,
+      "n_subjects_present": 10
+    }
+  ],
+  "network_counts": {
+    "background": 11,
+    "visual": 14,
+    "somatomotor": 6,
+    "dorsal_attention": 15,
+    "salience": 14,
+    "limbic": 10,
+    "frontoparietal": 9,
+    "default_mode": 17
+  }
+}
