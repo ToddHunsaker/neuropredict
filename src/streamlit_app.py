@@ -318,30 +318,34 @@ window.addEventListener('load', function() {
         "&lt;/body&gt;", inject_js + "&lt;/body&gt;", 1
     )
 
-    # Two-column layout: brain on the left (wider), vertical colorbar on right
-    brain_col, cbar_col = st.columns([5, 1])
-    with brain_col:
-        wrapped = f"""
-        <div style="background-color: #0e1117; padding: 0; margin: 0;">
-            {iframe_html}
-        </div>
-        """
-        st.components.v1.html(wrapped, height=520, scrolling=False)
+    # Brain widget (full width)
+    wrapped = f"""
+    <div style="background-color: #0e1117; padding: 0; margin: 0;">
+        {iframe_html}
+    </div>
+    """
+    st.components.v1.html(wrapped, height=520, scrolling=False)
+
+    # Horizontal colorbar below, constrained to roughly half the page width
+    edge_max = max(abs(adjacency.min()), abs(adjacency.max()))
+    _, cbar_col, _ = st.columns([1, 2, 1])
     with cbar_col:
-        edge_max = max(abs(adjacency.min()), abs(adjacency.max()))
-        fig_cbar, ax_cbar = plt.subplots(figsize=(0.5, 4.5))
+        fig_cbar, ax_cbar = plt.subplots(figsize=(5, 0.35))
         fig_cbar.patch.set_facecolor("#0e1117")
         cmap = plt.get_cmap("RdBu_r")
         norm = plt.Normalize(vmin=-edge_max, vmax=edge_max)
         cbar = fig_cbar.colorbar(
             plt.cm.ScalarMappable(norm=norm, cmap=cmap),
             cax=ax_cbar,
-            orientation="vertical",
+            orientation="horizontal",
         )
-        cbar.set_label("SHAP value", color="white", fontsize=10)
+        cbar.set_label(
+            "SHAP value (blue=control, red=autism)",
+            color="white", fontsize=10,
+        )
         cbar.ax.tick_params(colors="white", labelsize=9)
         cbar.outline.set_edgecolor("white")
-        st.pyplot(fig_cbar, use_container_width=False)
+        st.pyplot(fig_cbar)
         plt.close(fig_cbar)
 
     st.subheader("Brain visualization: static four-view")
@@ -349,7 +353,6 @@ window.addEventListener('load', function() {
         "Lateral left, lateral right, top, and bottom views. "
         "Same connections as the 3D view above."
     )
-    edge_max = max(abs(adjacency.min()), abs(adjacency.max()))
     fig_brain = plotting.plot_connectome(
         adjacency_valid,
         centroids_valid,
