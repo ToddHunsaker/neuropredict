@@ -260,11 +260,11 @@ def main():
         involved_regions.add(f["region_a"])
         involved_regions.add(f["region_b"])
     node_colors_3d = [
-        "#ffc800" if r in involved_regions else "#3a6b4a"
+        "#ffc800" if r in involved_regions else (0.5, 0.5, 0.5, 0.3)
         for r in valid_indices
     ]
     static_node_colors = [
-        "#ffc800" if r in involved_regions else "#3a6b4a"
+        (1.0, 0.78, 0.0, 1.0) if r in involved_regions else (0.5, 0.5, 0.5, 0.3)
         for r in valid_indices
     ]
 
