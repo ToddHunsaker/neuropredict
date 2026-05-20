@@ -253,11 +253,27 @@ def main():
     adjacency_valid = adjacency[np.ix_(valid_indices, valid_indices)]
     centroids_valid = centroids[valid_indices]
 
+    # Build per-node colors: highlight involved regions in yellow,
+    # fade the rest to a muted green
+    involved_regions = set()
+    for f in top_features:
+        involved_regions.add(f["region_a"])
+        involved_regions.add(f["region_b"])
+    node_colors_3d = [
+        "#ffc800" if r in involved_regions else "#3a6b4a"
+        for r in valid_indices
+    ]
+    static_node_colors = [
+        "#ffc800" if r in involved_regions else "#3a6b4a"
+        for r in valid_indices
+    ]
+
     st.subheader("Brain visualization: interactive 3D")
     st.caption(
         "Drag to rotate, scroll to zoom. "
         "Red lines push the prediction toward autism; blue toward control."
     )
+    # Render nilearn widget without its built-in colorbar
     view = plotting.view_connectome(
         adjacency_valid,
         centroids_valid,
@@ -266,9 +282,67 @@ def main():
         symmetric_cmap=True,
         linewidth=4.0,
         node_size=4.0,
-        colorbar=True,
+        node_color=node_colors_3d,
+        colorbar=False,
     )
-    st.components.v1.html(view.get_iframe(), height=520, scrolling=False)
+    iframe_html = view.get_iframe()
+
+    inject_js = """
+&lt;script&gt;
+window.addEventListener('load', function() {
+    try {
+        var attempts = 0;
+        var interval = setInterval(function() {
+            attempts++;
+            var canvases = document.querySelectorAll('canvas');
+            for (var i = 0; i &lt; canvases.length; i++) {
+                var c = canvases[i];
+                var r = c.__three_renderer || c._three_renderer;
+                if (r && r.setClearColor) {
+                    r.setClearColor(0x0e1117, 1);
+                    clearInterval(interval);
+                    return;
+                }
+                c.style.backgroundColor = '#0e1117';
+            }
+            document.body.style.backgroundColor = '#0e1117';
+            if (attempts &gt; 30) clearInterval(interval);
+        }, 100);
+    } catch (e) {
+        console.warn('Background injection failed:', e);
+    }
+});
+&lt;/script&gt;
+"""
+    iframe_html = iframe_html.replace(
+        "&lt;/body&gt;", inject_js + "&lt;/body&gt;", 1
+    )
+
+    # Two-column layout: brain on the left (wider), vertical colorbar on right
+    brain_col, cbar_col = st.columns([5, 1])
+    with brain_col:
+        wrapped = f"""
+        <div style="background-color: #0e1117; padding: 0; margin: 0;">
+            {iframe_html}
+        </div>
+        """
+        st.components.v1.html(wrapped, height=520, scrolling=False)
+    with cbar_col:
+        edge_max = max(abs(adjacency.min()), abs(adjacency.max()))
+        fig_cbar, ax_cbar = plt.subplots(figsize=(0.5, 4.5))
+        fig_cbar.patch.set_facecolor("#0e1117")
+        cmap = plt.get_cmap("RdBu_r")
+        norm = plt.Normalize(vmin=-edge_max, vmax=edge_max)
+        cbar = fig_cbar.colorbar(
+            plt.cm.ScalarMappable(norm=norm, cmap=cmap),
+            cax=ax_cbar,
+            orientation="vertical",
+        )
+        cbar.set_label("SHAP value", color="white", fontsize=10)
+        cbar.ax.tick_params(colors="white", labelsize=9)
+        cbar.outline.set_edgecolor("white")
+        st.pyplot(fig_cbar, use_container_width=False)
+        plt.close(fig_cbar)
 
     st.subheader("Brain visualization: static four-view")
     st.caption(
@@ -280,7 +354,7 @@ def main():
         adjacency_valid,
         centroids_valid,
         edge_threshold=None,
-        node_color="lightgray",
+        node_color=static_node_colors,
         node_size=20,
         edge_kwargs={"linewidth": 2},
         edge_cmap="RdBu_r",
