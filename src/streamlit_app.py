@@ -320,7 +320,8 @@ window.addEventListener('load', function() {
 
     # Brain widget (full width)
     wrapped = f"""
-    <div style="background-color: #0e1117; padding: 0; margin: 0;">
+    <div style="background-color: #0e1117; padding: 0; margin: 0;
+                display: flex; justify-content: center; align-items: center;">
         {iframe_html}
     </div>
     """
