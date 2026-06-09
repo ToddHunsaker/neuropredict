@@ -8,7 +8,7 @@ Psychiatric classification from resting-state fMRI functional connectivity, with
 
 ## What it does
 
-NeuroPredict takes a resting-state fMRI functional connectivity matrix — a 200×200 grid of Pearson correlations between brain region activity time-series — and predicts whether a subject has autism spectrum disorder or is a neurotypical control. For each prediction, it explains *which brain connections drove the decision* using SHAP attributions, mapped back to anatomical regions and Yeo 7 functional networks, and visualizes them on an interactive 3D brain.
+NeuroPredict takes a resting-state fMRI functional connectivity matrix -- a 200×200 grid of Pearson correlations between brain region activity time-series -- and predicts whether a subject has autism spectrum disorder or is a neurotypical control. For each prediction, it explains *which brain connections drove the decision* using SHAP attributions, mapped back to anatomical regions and Yeo 7 functional networks, and visualizes them on an interactive 3D brain.
 
 The project spans the full ML pipeline: data loading and preprocessing, classical and graph-based model training, explainability analysis, and a deployed Streamlit app with interactive neuroimaging visualizations.
 
@@ -36,7 +36,7 @@ The live app lets you pick from 8 bundled example subjects (4 autism, 4 control,
 
 The linear model outperformed the GNN. This is consistent with findings in the rs-fMRI classification literature: functional connectivity matrices are high-dimensional and noisy, and the inductive bias of GNNs doesn't help when the graph topology itself (which regions connect to which) is the same for every subject. The linear model with L1 regularization selects the most discriminative edges directly. The GNN result is reported honestly as a negative finding.
 
-The linear baseline is competitive with Heinsfeld et al. (2018), which reported AUC ~0.70 on ABIDE using a similar leave-site-out evaluation protocol. This is not 2024 state of the art — recent deep learning approaches on larger multi-site datasets achieve higher performance — but it reflects what a well-regularized classical model can do on this benchmark.
+The linear baseline is competitive with Heinsfeld et al. (2018), which reported AUC ~0.70 on ABIDE using a similar leave-site-out evaluation protocol. This is not 2024 state of the art -- recent deep learning approaches on larger multi-site datasets achieve higher performance -- but it reflects what a well-regularized classical model can do on this benchmark.
 
 ---
 
@@ -155,7 +155,7 @@ streamlit run src/streamlit_app.py
 
 **Why not deploy the GNN?** The GNN underperformed the linear model (AUC 0.662 vs 0.741). Deploying a worse-performing model because it sounds more impressive would be the wrong call. The GNN code and results are in the repository for transparency.
 
-**Why SHAP for a linear model?** A logistic regression is already interpretable via its coefficients — the weight for each feature is directly interpretable. SHAP was used here to produce per-subject, signed attributions: for each prediction, which connections pushed toward autism and which pushed toward control, by how much. The global model weights tell you what the model learned; the per-subject SHAP values tell you why it made this specific prediction for this specific person.
+**Why SHAP for a linear model?** A logistic regression is already interpretable via its coefficients -- the weight for each feature is directly interpretable. SHAP was used here to produce per-subject, signed attributions: for each prediction, which connections pushed toward autism and which pushed toward control, by how much. The global model weights tell you what the model learned; the per-subject SHAP values tell you why it made this specific prediction for this specific person.
 
 ---
 
@@ -163,13 +163,13 @@ streamlit run src/streamlit_app.py
 
 Building this project surfaced several things that aren't obvious from reading papers:
 
-**Site effects dominate.** The biggest signal in ABIDE isn't autism vs. control — it's which site the data came from. Scanner differences, preprocessing pipelines, and demographic composition all create site-level variance that swamps the diagnostic signal. LOSO-CV is mandatory, not optional.
+**Site effects dominate.** The biggest signal in ABIDE isn't autism vs. control -- it's which site the data came from. Scanner differences, preprocessing pipelines, and demographic composition all create site-level variance that swamps the diagnostic signal. LOSO-CV is mandatory, not optional.
 
 **GNNs don't automatically win.** The GNN had more parameters and a more sophisticated architecture, and it still lost to logistic regression by a meaningful margin. The inductive bias of graph convolution doesn't help when the graph structure is identical for every subject. For tabular connectivity data, classical methods are a strong baseline worth taking seriously.
 
-**Explainability is the interesting part.** The SHAP analysis revealed that the linear model's top discriminative connections were concentrated in visual and somatomotor networks, while GNNExplainer emphasized default mode and salience networks — different network fingerprints for the same predictions. Understanding *why* these methods disagree is more scientifically interesting than either result in isolation.
+**Explainability is the interesting part.** The SHAP analysis revealed that the linear model's top discriminative connections were concentrated in visual and somatomotor networks, while GNNExplainer emphasized default mode and salience networks -- different network fingerprints for the same predictions. Understanding *why* these methods disagree is more scientifically interesting than either result in isolation.
 
-**Deployment is harder than modeling.** The ML pipeline took Phase 1-5. Making it run reliably in a Docker container on Hugging Face Spaces — with correct dependency pinning, Git LFS for binary artifacts, nilearn's atlas download behavior, and cross-browser visualization — took Phase 6. Both halves matter for a production system.
+**Deployment is harder than modeling.** The ML pipeline took Phase 1-5. Making it run reliably in a Docker container on Hugging Face Spaces — with correct dependency pinning, Git LFS for binary artifacts, nilearn's atlas download behavior, and cross-browser visualization -- took Phase 6. Both halves matter for a production system.
 
 ---
 
