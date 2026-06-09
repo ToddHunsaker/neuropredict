@@ -149,7 +149,7 @@ def main():
     dataset_meta = load_dataset_meta()
     explainer = get_shap_explainer(model, scaler, example_matrices)
 
-    st.title("NeuroPredict")
+    st.title("NeuroPredict: Autism")
     st.markdown(
         "**A psychiatric classification demo from resting-state fMRI connectivity.** "
         "Pick an example subject or upload your own functional connectivity matrix to "
