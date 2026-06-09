@@ -1,7 +1,16 @@
-# NeuroPredict: Autism
-The first in a series of psychiatric classification tools built on resting-state fMRI functional connectivity. Classifies autism spectrum disorder vs. neurotypical controls using the ABIDE dataset, with explainable AI and an interactive web demo.
+---
+title: NeuroPredict Autism
+emoji: 🧠
+colorFrom: blue
+colorTo: red
+sdk: docker
+app_port: 8501
+pinned: false
+---
 
-*NeuroPredict: OCD (ENIGMA-OCD dataset) is in active development.*
+# NeuroPredict: Autism
+
+The first in a series of psychiatric classification tools built on resting-state fMRI functional connectivity. Classifies autism spectrum disorder vs. neurotypical controls using the ABIDE dataset, with explainable AI and an interactive web demo.
 
 **[Live demo on Hugging Face Spaces](https://huggingface.co/spaces/Saturnalia777/NeuroPredict)**
 
@@ -9,7 +18,7 @@ The first in a series of psychiatric classification tools built on resting-state
 
 ## What it does
 
-NeuroPredict takes a resting-state fMRI functional connectivity matrix -- a 200×200 grid of Pearson correlations between brain region activity time-series -- and predicts whether a subject has autism spectrum disorder or is a neurotypical control. For each prediction, it explains *which brain connections drove the decision* using SHAP attributions, mapped back to anatomical regions and Yeo 7 functional networks, and visualizes them on an interactive 3D brain.
+NeuroPredict takes a resting-state fMRI functional connectivity matrix -- a 200×200 grid of Pearson correlations between brain region activity time-series -- and predicts whether a subject has autism spectrum disorder or is a neurotypical control. For each prediction, it explains _which brain connections drove the decision_ using SHAP attributions, mapped back to anatomical regions and Yeo 7 functional networks, and visualizes them on an interactive 3D brain.
 
 The project spans the full ML pipeline: data loading and preprocessing, classical and graph-based model training, explainability analysis, and a deployed Streamlit app with interactive neuroimaging visualizations.
 
@@ -30,10 +39,10 @@ The live app lets you pick from 8 bundled example subjects (4 autism, 4 control,
 
 ## Results
 
-| Model | Architecture | Evaluation | Mean AUC |
-|---|---|---|---|
+| Model           | Architecture                       | Evaluation              | Mean AUC  |
+| --------------- | ---------------------------------- | ----------------------- | --------- |
 | Linear baseline | L1-regularized logistic regression | LOSO site-CV (20 sites) | **0.741** |
-| BrainGCN | Graph convolutional network | LOSO site-CV (20 sites) | 0.662 |
+| BrainGCN        | Graph convolutional network        | LOSO site-CV (20 sites) | 0.662     |
 
 The linear model outperformed the GNN. This is consistent with findings in the rs-fMRI classification literature: functional connectivity matrices are high-dimensional and noisy, and the inductive bias of GNNs doesn't help when the graph topology itself (which regions connect to which) is the same for every subject. The linear model with L1 regularization selects the most discriminative edges directly. The GNN result is reported honestly as a negative finding.
 
@@ -168,7 +177,7 @@ Building this project surfaced several things that aren't obvious from reading p
 
 **GNNs don't automatically win.** The GNN had more parameters and a more sophisticated architecture, and it still lost to logistic regression by a meaningful margin. The inductive bias of graph convolution doesn't help when the graph structure is identical for every subject. For tabular connectivity data, classical methods are a strong baseline worth taking seriously.
 
-**Explainability is the interesting part.** The SHAP analysis revealed that the linear model's top discriminative connections were concentrated in visual and somatomotor networks, while GNNExplainer emphasized default mode and salience networks -- different network fingerprints for the same predictions. Understanding *why* these methods disagree is more scientifically interesting than either result in isolation.
+**Explainability is the interesting part.** The SHAP analysis revealed that the linear model's top discriminative connections were concentrated in visual and somatomotor networks, while GNNExplainer emphasized default mode and salience networks -- different network fingerprints for the same predictions. Understanding _why_ these methods disagree is more scientifically interesting than either result in isolation.
 
 **Deployment is harder than modeling.** The ML pipeline took Phase 1-5. Making it run reliably in a Docker container on Hugging Face Spaces — with correct dependency pinning, Git LFS for binary artifacts, nilearn's atlas download behavior, and cross-browser visualization -- took Phase 6. Both halves matter for a production system.
 
@@ -176,11 +185,11 @@ Building this project surfaced several things that aren't obvious from reading p
 
 ## References
 
-- Craddock et al. (2012). A whole brain fMRI atlas generated via spatially constrained spectral clustering. *Human Brain Mapping*.
-- Di Martino et al. (2014). The autism brain imaging data exchange: towards a large-scale evaluation of the intrinsic brain architecture in autism. *Molecular Psychiatry*.
-- Heinsfeld et al. (2018). Identification of autism spectrum disorder using deep learning and the ABIDE dataset. *NeuroImage: Clinical*.
-- Lundberg & Lee (2017). A unified approach to interpreting model predictions. *NeurIPS*.
-- Yeo et al. (2011). The organization of the human cerebral cortex estimated by intrinsic functional connectivity. *Journal of Neurophysiology*.
+- Craddock et al. (2012). A whole brain fMRI atlas generated via spatially constrained spectral clustering. _Human Brain Mapping_.
+- Di Martino et al. (2014). The autism brain imaging data exchange: towards a large-scale evaluation of the intrinsic brain architecture in autism. _Molecular Psychiatry_.
+- Heinsfeld et al. (2018). Identification of autism spectrum disorder using deep learning and the ABIDE dataset. _NeuroImage: Clinical_.
+- Lundberg & Lee (2017). A unified approach to interpreting model predictions. _NeurIPS_.
+- Yeo et al. (2011). The organization of the human cerebral cortex estimated by intrinsic functional connectivity. _Journal of Neurophysiology_.
 
 ---
 
