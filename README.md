@@ -1,6 +1,7 @@
-# NeuroPredict
+# NeuroPredict: Autism
+The first in a series of psychiatric classification tools built on resting-state fMRI functional connectivity. Classifies autism spectrum disorder vs. neurotypical controls using the ABIDE dataset, with explainable AI and an interactive web demo.
 
-Psychiatric classification from resting-state fMRI functional connectivity, with explainable AI and a deployed interactive web demo.
+*NeuroPredict: OCD (ENIGMA-OCD dataset) is in active development.*
 
 **[Live demo on Hugging Face Spaces](https://huggingface.co/spaces/Saturnalia777/NeuroPredict)**
 
