@@ -1,0 +1,30 @@
+{
+  "name": "abide",
+  "n_subjects": 871,
+  "n_regions": 200,
+  "n_features": 19900,
+  "n_controls": 468,
+  "n_cases": 403,
+  "sites": [
+    "CALTECH",
+    "CMU",
+    "KKI",
+    "LEUVEN_1",
+    "LEUVEN_2",
+    "MAX_MUN",
+    "NYU",
+    "OHSU",
+    "OLIN",
+    "PITT",
+    "SBL",
+    "SDSU",
+    "STANFORD",
+    "TRINITY",
+    "UCLA_1",
+    "UCLA_2",
+    "UM_1",
+    "UM_2",
+    "USM",
+    "YALE"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "examples": [
+    {
+      "subject_idx": 573,
+      "diagnosis": 0,
+      "diagnosis_name": "control",
+      "site": "NYU",
+      "age": 11.56,
+      "sex": 2
+    },
+    {
+      "subject_idx": 237,
+      "diagnosis": 0,
+      "diagnosis_name": "control",
+      "site": "UM_1",
+      "age": 17.9,
+      "sex": 1
+    },
+    {
+      "subject_idx": 753,
+      "diagnosis": 0,
+      "diagnosis_name": "control",
+      "site": "UCLA_1",
+      "age": 12.09,
+      "sex": 1
+    },
+    {
+      "subject_idx": 32,
+      "diagnosis": 0,
+      "diagnosis_name": "control",
+      "site": "PITT",
+      "age": 27.92,
+      "sex": 1
+    },
+    {
+      "subject_idx": 523,
+      "diagnosis": 1,
+      "diagnosis_name": "autism",
+      "site": "NYU",
+      "age": 9.78,
+      "sex": 1
+    },
+    {
+      "subject_idx": 192,
+      "diagnosis": 1,
+      "diagnosis_name": "autism",
+      "site": "UM_1",
+      "age": 15.0,
+      "sex": 2
+    },
+    {
+      "subject_idx": 702,
+      "diagnosis": 1,
+      "diagnosis_name": "autism",
+      "site": "UCLA_1",
+      "age": 14.57,
+      "sex": 1
+    },
+    {
+      "subject_idx": 16,
+      "diagnosis": 1,
+      "diagnosis_name": "autism",
+      "site": "PITT",
+      "age": 22.64,
+      "sex": 1
+    }
+  ],
+  "n_examples": 8
+}
