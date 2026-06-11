@@ -46,7 +46,12 @@ def load_atlas():
 
 @st.cache_resource
 def load_examples():
-    matrices = np.load(ARTIFACTS_DIR / "example_connectivity.npy")
+    p = ARTIFACTS_DIR / "example_connectivity.npy"
+    size = p.stat().st_size
+    with open(p, "rb") as fh:
+        head = fh.read(32)
+    print(f"[DIAG] example_connectivity.npy size={size} head={head!r}", flush=True)
+    matrices = np.load(p)
     with (ARTIFACTS_DIR / "examples.json").open() as fh:
         meta = json.load(fh)
     return matrices, meta["examples"]
